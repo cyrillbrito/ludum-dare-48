@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idle_11.png-64d0aca5b1b050945f2786383993c82f.stex"
+path="res://.import/idle_04.png-cae3fc2df180ad69a551a87a4e1d61b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/idle_11.png"
-dest_files=[ "res://.import/idle_11.png-64d0aca5b1b050945f2786383993c82f.stex" ]
+source_file="res://Player/idle/idle_04.png"
+dest_files=[ "res://.import/idle_04.png-cae3fc2df180ad69a551a87a4e1d61b9.stex" ]
 
 [params]
 

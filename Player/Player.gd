@@ -6,10 +6,11 @@ var fireDelay = maxFireDelay
 var speed = 300
 export var life = 10
 export var maxLife = 10
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(true)
-	set_process(true) 
+	set_process(true)
 
 
 func _physics_process(delta):
@@ -26,8 +27,14 @@ func _physics_process(delta):
 	velocity = move_and_collide(velocity)
 
 func _process(delta):
+	if Input.is_action_pressed("fire"):
+		$AnimationTree.set("parameters/transition/current", "atack")
+	else:
+		$AnimationTree.set("parameters/transition/current", "idel")
+		
+	
 	if fireDelay < 0:
-		if Input.is_action_pressed("fire") : #span Bullet
+		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
 			bulletIntance.isPlayer = true
 			bulletIntance.collision_layer = 2
@@ -36,4 +43,3 @@ func _process(delta):
 			fireDelay = maxFireDelay
 	else:
 		fireDelay -= delta
-		
