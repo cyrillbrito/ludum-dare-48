@@ -143,6 +143,12 @@ position = Vector2( 942.102, 195.723 )
 collision_layer = 2
 collision_mask = 2
 
+[node name="Moob2" parent="ConstantMovement" instance=ExtResource( 3 )]
+position = Vector2( 841.49, 359.527 )
+
+[node name="Moob3" parent="ConstantMovement" instance=ExtResource( 3 )]
+position = Vector2( 885.937, 186.501 )
+
 [node name="Camera2D" type="Camera2D" parent="ConstantMovement"]
 anchor_mode = 0
 current = true
