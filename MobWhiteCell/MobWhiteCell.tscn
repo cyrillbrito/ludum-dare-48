@@ -1,20 +1,150 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://MobWhiteCell/idle/whitecell_00001.png" type="Texture" id=1]
-[ext_resource path="res://MobRedCell/MobRedCell.gd" type="Script" id=2]
+[ext_resource path="res://MobWhiteCell/MobWhiteCell.gd" type="Script" id=2]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00021.png" type="Texture" id=3]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00014.png" type="Texture" id=4]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00013.png" type="Texture" id=5]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00015.png" type="Texture" id=6]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00010.png" type="Texture" id=7]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00006.png" type="Texture" id=8]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00017.png" type="Texture" id=9]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00027.png" type="Texture" id=10]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00004.png" type="Texture" id=11]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00007.png" type="Texture" id=12]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00002.png" type="Texture" id=13]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00019.png" type="Texture" id=14]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00005.png" type="Texture" id=15]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00011.png" type="Texture" id=16]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00012.png" type="Texture" id=17]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00022.png" type="Texture" id=18]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00026.png" type="Texture" id=19]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00020.png" type="Texture" id=20]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00018.png" type="Texture" id=21]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00016.png" type="Texture" id=22]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00003.png" type="Texture" id=23]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00028.png" type="Texture" id=24]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00029.png" type="Texture" id=25]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00023.png" type="Texture" id=26]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00009.png" type="Texture" id=27]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00024.png" type="Texture" id=28]
+[ext_resource path="res://MobWhiteCell/attack/whitecell_00025.png" type="Texture" id=29]
+[ext_resource path="res://MobWhiteCell/idle/whitecell_00008.png" type="Texture" id=30]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 25.165
-height = 32.5047
+[sub_resource type="CircleShape2D" id=15]
 
-[node name="MobRedCell" type="KinematicBody2D"]
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 22 ), ExtResource( 9 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "attack",
+"speed": 20.0
+} ]
+
+[sub_resource type="Animation" id=12]
+resource_name = "attack"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "attack" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "idle"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/attack/node = SubResource( 5 )
+states/attack/position = Vector2( 488, 144 )
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 281, 144 )
+transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ) ]
+graph_offset = Vector2( -106.529, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[node name="MobWhiteCell" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 1 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.17482, 1.38898 )
-rotation = 1.83259
-shape = SubResource( 1 )
+scale = Vector2( 5.55, 5.25 )
+shape = SubResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, -1 )
+scale = Vector2( 0.45, 0.45 )
+frames = SubResource( 11 )
+animation = "idle"
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 12 )
+anims/idle = SubResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 9 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 14 )

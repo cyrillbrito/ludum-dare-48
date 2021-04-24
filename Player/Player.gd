@@ -12,6 +12,7 @@ export var maxLife = 10
 func _ready():
 	set_physics_process(true)
 	set_process(true)
+	animation_start()
 
 
 func _physics_process(delta):
@@ -29,6 +30,12 @@ func _physics_process(delta):
 	velocity = move_and_collide(velocity)
 
 func _process(delta):
+	
+	if Input.is_action_pressed("fire"):
+		animation_attack()
+	else:
+		animation_idel()
+
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
@@ -39,8 +46,11 @@ func _process(delta):
 			bulletIntance.position = Vector2(position.x + 50 , position.y - 30)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
-			$AnimationTree.set("parameters/transition/current", 1)
-		else:
-			$AnimationTree.set("parameters/transition/current", 0)
 	else:
 		fireDelay -= delta
+
+
+# =========== ANIMATION FUNCTIONS ===========
+func animation_start():  $AnimationTree.get("parameters/playback").start("idle")
+func animation_idel():   $AnimationTree.get("parameters/playback").travel("idle")
+func animation_attack(): $AnimationTree.get("parameters/playback").travel("attack")

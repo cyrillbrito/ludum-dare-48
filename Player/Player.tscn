@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player/attack/attack_07.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -69,6 +69,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+length = 1.1
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -101,23 +102,19 @@ animation = "attack"
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "idle"
 
-[sub_resource type="AnimationNodeTransition" id=7]
-input_count = 2
-input_0/name = "idel"
-input_0/auto_advance = false
-input_1/name = "attack"
-input_1/auto_advance = false
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
-graph_offset = Vector2( 109.544, 178.25 )
-nodes/Attack/node = SubResource( 5 )
-nodes/Attack/position = Vector2( 300, 380 )
-nodes/Idle/node = SubResource( 6 )
-nodes/Idle/position = Vector2( 300, 240 )
-nodes/output/position = Vector2( 800, 280 )
-nodes/transition/node = SubResource( 7 )
-nodes/transition/position = Vector2( 540, 280 )
-node_connections = [ "output", 0, "transition", "transition", 0, "Idle", "transition", 1, "Attack" ]
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=9]
+states/attack/node = SubResource( 5 )
+states/attack/position = Vector2( 441, 115 )
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 237, 115 )
+transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 88.9493, 319.907 )
@@ -144,7 +141,7 @@ anims/attack = SubResource( 3 )
 anims/idle = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/transition/current = 0
+parameters/playback = SubResource( 10 )

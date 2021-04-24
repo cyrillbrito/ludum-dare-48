@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Parallax/midground_bottom_small.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Parallax/foreground_small.png" type="Texture" id=8]
 [ext_resource path="res://Parallax/foreground_big.png" type="Texture" id=9]
 [ext_resource path="res://Parallax/background_wave.png" type="Texture" id=10]
+[ext_resource path="res://MobWhiteCell/MobWhiteCell.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="Node2D"]
 
@@ -223,3 +224,6 @@ text = "Life:   10/10: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MobWhiteCell" parent="ConstantMovement" instance=ExtResource( 11 )]
+position = Vector2( 804.58, 286.8 )
