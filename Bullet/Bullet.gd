@@ -9,5 +9,9 @@ func _ready():
 	# Replace with function body.
 
 func _physics_process(delta):
-	 move_and_collide(Vector2(speed * delta, 0))
+	var collidedObjext =  move_and_collide(Vector2(speed * delta, 0))
+	
+	if collidedObjext:
+		collidedObjext.collider.queue_free()
+		queue_free()
 	

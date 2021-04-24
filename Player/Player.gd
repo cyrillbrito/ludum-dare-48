@@ -28,7 +28,7 @@ func _process(delta):
 		if Input.is_action_pressed("fire") : #span Bullet
 			print("Shoot")
 			var bulletIntance = bullet.instance()
-			bulletIntance.position = Vector2(position.x + 30 , position.y)
+			bulletIntance.position = Vector2(position.x + 50 , position.y)
 			get_tree().get_root().add_child(bulletIntance)
 			fireDelay = maxFireDelay
 	else:
