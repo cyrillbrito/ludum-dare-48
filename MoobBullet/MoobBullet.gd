@@ -12,9 +12,8 @@ func _ready():
 func _physics_process(delta):
 	var collidedObjext =  move_and_collide(Vector2(-speed * delta, 0))
 	if collidedObjext:
-		print("I collided with ", collidedObjext.collider.life)
+		print("You have been hit!")
 		var collided =  collidedObjext.collider 
 		collided.life -= damage
-#		print(str(collidedObjext))
 		queue_free()
 	
