@@ -18,23 +18,45 @@ extents = Vector2( 683.776, 70.9716 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="BackgroundWaveBottom" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="BackgroundWaveBottom1" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.3, 1 )
-motion_mirroring = Vector2( 767, 0 )
+motion_mirroring = Vector2( 1534, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveBottom"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveBottom1"]
 position = Vector2( 4.08176, 423.586 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 10 )
 centered = false
 
-[node name="BackgroundWaveTop" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="BackgroundWaveBottom2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 767, -40 )
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1534, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveBottom2"]
+position = Vector2( 4.08176, 423.586 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BackgroundWaveTop1" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.3, 1 )
-motion_mirroring = Vector2( 767, 0 )
+motion_mirroring = Vector2( 1534, 0 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveTop"]
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveTop1"]
+position = Vector2( 647.858, 47.2297 )
+scale = Vector2( -0.4, 0.4 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="BackgroundWaveTop2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 767, -40 )
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1534, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BackgroundWaveTop2"]
 position = Vector2( 647.858, 47.2297 )
 scale = Vector2( -0.4, 0.4 )
 texture = ExtResource( 10 )

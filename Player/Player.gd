@@ -28,9 +28,9 @@ func _physics_process(delta):
 
 func _process(delta):
 	if Input.is_action_pressed("fire"):
-		$AnimationTree.set("parameters/transition/current", "atack")
+		$AnimationTree.set("parameters/transition/current", 1)
 	else:
-		$AnimationTree.set("parameters/transition/current", "idel")
+		$AnimationTree.set("parameters/transition/current", 0)
 		
 	
 	if fireDelay < 0:
