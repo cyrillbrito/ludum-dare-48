@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ld48"
+run/main_scene="res://Node2D.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
