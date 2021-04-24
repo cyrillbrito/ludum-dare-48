@@ -24,9 +24,9 @@
 [ext_resource path="res://Player/attack/attack_01.png" type="Texture" id=22]
 [ext_resource path="res://Player/attack/attack_09.png" type="Texture" id=23]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
@@ -40,7 +40,6 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=3]
-resource_name = "attack"
 length = 0.4
 loop = true
 step = 0.04
@@ -70,7 +69,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "idle"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -124,18 +122,21 @@ node_connections = [ "output", 0, "transition", "transition", 0, "Idle", "transi
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 88.9493, 319.907 )
 rotation = -3.14159
+collision_layer = 4
+collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
 scale = Vector2( 3.2, 5 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5.76437, 7.24463 )
 scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "idle"
+frame = 1
 flip_h = true
 flip_v = true
 

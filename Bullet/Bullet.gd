@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var speed = 300
+export var hasLife = false
 export var isPlayer = false
 
 # Called when the node enters the scene tree for the first time.
@@ -18,5 +19,8 @@ func _physics_process(delta):
 		var collidedObjext =  move_and_collide(Vector2(-speed * delta, 0))
 		if collidedObjext:
 			var player = collidedObjext.collider
-			player.life -= 0.5
 			queue_free()
+			if player.hasLife:
+				player.life -= 0.5
+			else:
+				player.queue_free()

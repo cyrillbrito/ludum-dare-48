@@ -4,6 +4,7 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var maxFireDelay = 0.4
 var fireDelay = maxFireDelay
 var speed = 300
+export var hasLife = true
 export var life = 10
 export var maxLife = 10
 
@@ -32,7 +33,9 @@ func _process(delta):
 		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
 			bulletIntance.isPlayer = true
-			bulletIntance.collision_layer = 2
+			bulletIntance.collision_layer = 2^2
+			
+			bulletIntance.collision_mask = 8
 			bulletIntance.position = Vector2(position.x + 50 , position.y)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
