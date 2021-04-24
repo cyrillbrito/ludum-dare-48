@@ -30,6 +30,7 @@ func _process(delta):
 		if Input.is_action_pressed("fire") : #span Bullet
 			var bulletIntance = bullet.instance()
 			bulletIntance.isPlayer = true
+			bulletIntance.collision_layer = 2
 			bulletIntance.position = Vector2(position.x + 50 , position.y)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
