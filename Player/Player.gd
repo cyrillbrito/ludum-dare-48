@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var bullet = preload("res://Bullet/Bullet.tscn")
-var maxFireDelay = 0.25
+var maxFireDelay = 0.4
 var fireDelay = maxFireDelay
 var speed = 300
 export var life = 10
@@ -27,12 +27,7 @@ func _physics_process(delta):
 	velocity = move_and_collide(velocity)
 
 func _process(delta):
-	if Input.is_action_pressed("fire"):
-		$AnimationTree.set("parameters/transition/current", 1)
-	else:
-		$AnimationTree.set("parameters/transition/current", 0)
-		
-	
+
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
@@ -41,5 +36,8 @@ func _process(delta):
 			bulletIntance.position = Vector2(position.x + 50 , position.y)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
+			$AnimationTree.set("parameters/transition/current", 1)
+		else:
+			$AnimationTree.set("parameters/transition/current", 0)
 	else:
 		fireDelay -= delta
