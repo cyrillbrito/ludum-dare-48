@@ -24,10 +24,10 @@
 [ext_resource path="res://Player/attack/attack_01.png" type="Texture" id=22]
 [ext_resource path="res://Player/attack/attack_09.png" type="Texture" id=23]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 10.2801
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
@@ -129,13 +129,13 @@ script = ExtResource( 2 )
 position = Vector2( 4.24744, -6.60712 )
 rotation = -1.57079
 scale = Vector2( 3, 5 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "idle"
-frame = 2
+frame = 1
 flip_h = true
 flip_v = true
 
