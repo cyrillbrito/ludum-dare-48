@@ -65,7 +65,7 @@ centered = false
 [node name="MidgroundBottonBig" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
-motion_mirroring = Vector2( 1170, 0 )
+motion_mirroring = Vector2( 1600, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/MidgroundBottonBig"]
 position = Vector2( 468.557, 500 )
@@ -76,7 +76,7 @@ centered = false
 [node name="MidgroundBottonSmall1" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
-motion_mirroring = Vector2( 1170, 0 )
+motion_mirroring = Vector2( 1600, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/MidgroundBottonSmall1"]
 position = Vector2( -10.901, 520 )
@@ -87,7 +87,7 @@ centered = false
 [node name="MidgroundBottonSmall2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
-motion_mirroring = Vector2( 1170, 0 )
+motion_mirroring = Vector2( 1600, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/MidgroundBottonSmall2"]
 position = Vector2( 1168.27, 520 )
@@ -153,6 +153,39 @@ motion_mirroring = Vector2( 1400, 0 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ForegroundBig"]
 position = Vector2( 740, 530 )
 scale = Vector2( 0.4, 0.4 )
+z_index = 1
+texture = ExtResource( 9 )
+centered = false
+
+[node name="ForegroundTopSmall1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1330, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ForegroundTopSmall1"]
+position = Vector2( 827.704, 71.991 )
+scale = Vector2( 0.4, -0.4 )
+z_index = 1
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ForegroundTopSmall2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1330, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ForegroundTopSmall2"]
+position = Vector2( 469.638, 83.9503 )
+scale = Vector2( 0.4, -0.4 )
+z_index = 1
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ForegroundTopBig" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 1330, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ForegroundTopBig"]
+position = Vector2( -141.99, 75.2357 )
+scale = Vector2( 0.4, -0.4 )
 z_index = 1
 texture = ExtResource( 9 )
 centered = false
