@@ -8,7 +8,7 @@ var life = 10
 var rng = RandomNumberGenerator.new()
 
 var goingUp
-export var leftSpeed = 20
+export var leftSpeed = 40
 export var topDownSpeed = 20
 
 var deltaSinzeLastRand = 0;
@@ -16,6 +16,7 @@ var deltaSinzeLastRand = 0;
 func _ready():
 	rng.randomize()
 	goingUp = rng.randf() < 0.5
+	fireDelay = rng.randi_range(0, maxFireDelay)
 
 
 func _process(delta):

@@ -134,7 +134,7 @@ position = Vector2( 4, 0 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 animation = "attack"
-frame = 1
+frame = 3
 flip_h = true
 flip_v = true
 
