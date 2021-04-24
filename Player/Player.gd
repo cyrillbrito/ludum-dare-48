@@ -16,6 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	var velocity = Vector2()
+	print("life  "+ str(life))
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_right"):
@@ -28,7 +29,6 @@ func _physics_process(delta):
 	velocity = move_and_collide(velocity)
 
 func _process(delta):
-
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
@@ -36,7 +36,7 @@ func _process(delta):
 			bulletIntance.collision_layer = 2^2
 			
 			bulletIntance.collision_mask = 8
-			bulletIntance.position = Vector2(position.x + 50 , position.y)
+			bulletIntance.position = Vector2(position.x + 50 , position.y - 30)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
 			$AnimationTree.set("parameters/transition/current", 1)

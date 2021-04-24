@@ -199,6 +199,7 @@ script = ExtResource( 6 )
 
 [node name="Player" parent="ConstantMovement" instance=ExtResource( 1 )]
 position = Vector2( 96.2425, 291.711 )
+collision_mask = 9
 
 [node name="MobRedCell1" parent="ConstantMovement" instance=ExtResource( 3 )]
 position = Vector2( 942.102, 195.723 )
