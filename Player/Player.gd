@@ -5,8 +5,7 @@ var maxFireDelay = 0.25
 var fireDelay = maxFireDelay
 var speed = 300
 export var life = 10
-var maxLife = 10
-
+export var maxLife = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(true)
@@ -16,21 +15,22 @@ func _ready():
 func _physics_process(delta):
 	var velocity = Vector2()
 	if Input.is_action_pressed("ui_left"):
-		move_and_collide(Vector2(-speed * delta, 0))
-	elif Input.is_action_pressed("ui_right"):
-		move_and_collide(Vector2(speed * delta, 0))
-	elif Input.is_action_pressed("ui_up"):
-		move_and_collide(Vector2(0, -speed * delta))
-	elif Input.is_action_pressed("ui_down"):
-		move_and_collide(Vector2(0, speed * delta))
-
-
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	velocity = velocity.normalized() * speed * delta
+	velocity = move_and_collide(velocity)
 
 func _process(delta):
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire") : #span Bullet
 			print("Shoot", position)
 			var bulletIntance = bullet.instance()
+			bulletIntance.isPlayer = true
 			bulletIntance.position = Vector2(position.x + 50 , position.y)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
