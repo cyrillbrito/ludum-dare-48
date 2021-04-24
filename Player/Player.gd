@@ -28,7 +28,6 @@ func _physics_process(delta):
 func _process(delta):
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire") : #span Bullet
-			print("Shoot", position)
 			var bulletIntance = bullet.instance()
 			bulletIntance.isPlayer = true
 			bulletIntance.position = Vector2(position.x + 50 , position.y)
