@@ -32,6 +32,8 @@ func _physics_process(delta):
 		
 	var overlaps = get_overlapping_areas()
 	for overlap in overlaps:
+		if overlap.type == EntityTypes.TOP_LIMIT || overlap.type == EntityTypes.BOTTOM_LIMIT:
+			dir = !dir
 		if overlap.type == EntityTypes.PLAYER_BULLET:
 			overlap.queue_free()
 			queue_free()

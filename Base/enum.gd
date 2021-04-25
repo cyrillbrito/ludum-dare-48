@@ -7,4 +7,5 @@ enum EntityTypes {
 	PLAYER_BULLET,
 	TOP_LIMIT,
 	BOTTOM_LIMIT,
+	RIGHT_LIMIT,
 }

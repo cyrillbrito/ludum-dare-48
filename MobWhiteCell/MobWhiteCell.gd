@@ -42,8 +42,6 @@ func init_bullet(degrees):
 	var x = position.x + cos(degrees) * 10
 	var y = position.y + sin(degrees) * 10
 	instance.position = Vector2(x, y)
-#	instance.collision_layer = 7
-#	instance.collision_mask = 2^2
 	instance.degrees = degrees
 	instance.type = EntityTypes.MOB_BULLET
 	get_parent().add_child(instance)

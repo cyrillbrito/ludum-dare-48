@@ -23,7 +23,6 @@ func _physics_process(delta):
 	
 	var overlaps = get_overlapping_areas()
 	for overlap in overlaps:
-		print(overlap.type)
 		if overlap.type == EntityTypes.MOB_BULLET:
 			overlap.queue_free()
 			queue_free()

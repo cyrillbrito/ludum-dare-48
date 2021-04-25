@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Parallax/midground_bottom_small.png" type="Texture" id=2]
@@ -13,8 +13,12 @@
 [ext_resource path="res://MobWhiteCell/MobWhiteCell.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Base/TopArea2D.gd" type="Script" id=12]
 [ext_resource path="res://Base/BottomArea2D.gd" type="Script" id=13]
+[ext_resource path="res://RightArea2D.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 275.559, 542.902 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -249,3 +253,10 @@ script = ExtResource( 13 )
 position = Vector2( 527.007, 650 )
 scale = Vector2( 70, 10 )
 shape = SubResource( 1 )
+
+[node name="RightArea2D" type="Area2D" parent="ConstantMovement"]
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/RightArea2D"]
+position = Vector2( 813.549, 306.272 )
+shape = SubResource( 2 )
