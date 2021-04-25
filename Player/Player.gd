@@ -44,12 +44,15 @@ func _physics_process(delta):
 			if  0 > velocity.x:
 				 velocity.x = 0
 		elif overlap.type != EntityTypes.PLAYER_BULLET:
-			life -= 1
+			takeDamage(1)
 			overlap.queue_free()
 			
 	position.x += velocity.x
 	position.y += velocity.y
 
+func takeDamage(damage):
+	life -= damage
+	$DamageSound.play()
 
 func _process(delta):
 	
@@ -65,6 +68,7 @@ func _process(delta):
 			bulletIntance.degrees = 0
 			bulletIntance.position = Vector2(position.x + 50 , position.y - 30)
 			get_parent().add_child(bulletIntance)
+			$ShootSound.play()
 			fireDelay = maxFireDelay
 	else:
 		fireDelay -= delta
