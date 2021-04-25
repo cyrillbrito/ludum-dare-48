@@ -4,7 +4,10 @@ const bullet = preload("res://Bullet/Bullet.tscn")
 
 var hasLife = true
 
-var bulletsIn
+# used in the attack logic
+var bulletTimeout
+var bulletCurrent
+
 
 func _ready():
 	life = 4
@@ -17,11 +20,10 @@ func _process(delta):
 	if death:
 		return
 	
-	if bulletsIn != null:
-		bulletsIn -= delta
-		if(bulletsIn < 0):
-			init_bullets()
-			bulletsIn = null
+	if bulletCurrent != null:
+		print(bulletTimeout)
+		bulletTimeout -= delta
+		bulletLogic()
 
 
 func _physics_process(delta):
@@ -31,26 +33,31 @@ func _physics_process(delta):
 func _tick():
 	if !animation_is_attacking() && rng.randf() < 0.4:
 		animation_attack()
-		bulletsIn = 0.7
-		
+		bulletCurrent = 7
+		bulletTimeout = 0.5
+
+
 func _die():
 	animation_death()
 
 
-func init_bullets():
-	init_bullet(PI/3*0)
-	init_bullet(PI/3*1)
-	init_bullet(PI/3*2)
-	init_bullet(PI/3*3)
-	init_bullet(PI/3*4)
-	init_bullet(PI/3*5)
+func bulletLogic():
+	if 0 < bulletTimeout:
+		return
+	
+	init_bullet(PI/4 * (bulletCurrent + 0.5) - PI/2)
+	if(bulletCurrent == 0):
+		bulletCurrent = null
+	else:
+		bulletCurrent -= 1
+		bulletTimeout += 0.05
+
 
 
 func init_bullet(degrees):
 	var bulletinstance = bullet.instance()
-	var x = position.x + cos(degrees) * 10
-	var y = position.y + sin(degrees) * 10
-	bulletinstance.position = Vector2(x, y)
+	bulletinstance.z_index = -10
+	bulletinstance.position = position
 	bulletinstance.degrees = degrees
 	bulletinstance.type = EntityTypes.MOB_BULLET
 	bulletinstance.get_node("SpritePlayer").queue_free()
