@@ -10,6 +10,8 @@ var dir
 var deltaSinceTick = 0
 var rng = RandomNumberGenerator.new()
 
+var death = false
+
 
 func _ready():
 	rng.randomize()
@@ -17,6 +19,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	
+	if death:
+		return
+	
 	deltaSinceTick += delta
 	while (1 < deltaSinceTick):
 		deltaSinceTick -= 1
@@ -36,9 +42,20 @@ func _physics_process(delta):
 			dir = !dir
 		if overlap.type == EntityTypes.PLAYER_BULLET:
 			overlap.queue_free()
-			queue_free()
+			damage()
 		if overlap.type == EntityTypes.PLAYER:
-			queue_free()	
+			queue_free()
+
+
+func damage():
+	life -= 1
+	if life <= 0:
+		death = true
+		_die()
+
 
 func _tick():
+	pass
+
+func _die():
 	pass

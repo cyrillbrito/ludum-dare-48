@@ -25,3 +25,11 @@ func _process(delta):
 
 func _physics_process(delta):
 	pass
+
+
+func _die():
+	animation_death()
+
+
+# =========== ANIMATION FUNCTIONS ===========
+func animation_death(): $AnimationTree.get("parameters/playback").travel("death")

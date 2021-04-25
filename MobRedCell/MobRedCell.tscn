@@ -70,6 +70,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "idle"
@@ -133,8 +147,7 @@ shape = SubResource( 1 )
 position = Vector2( -3, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-animation = "death"
-frame = 11
+animation = "idle"
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -11,6 +11,10 @@ func _ready():
 
 
 func _process(delta):
+	
+	if death:
+		return
+	
 	if bulletsIn != null:
 		bulletsIn -= delta
 		if(bulletsIn < 0):
@@ -26,6 +30,9 @@ func _tick():
 	if !animation_is_attacking() && rng.randf() < 0.4:
 		animation_attack()
 		bulletsIn = 0.7
+		
+func _die():
+	animation_death()
 
 
 func init_bullets():
@@ -50,4 +57,5 @@ func init_bullet(degrees):
 # =========== ANIMATION FUNCTIONS ===========
 func animation_idel():   $AnimationTree.get("parameters/playback").travel("idle")
 func animation_attack(): $AnimationTree.get("parameters/playback").travel("attack")
+func animation_death(): $AnimationTree.get("parameters/playback").travel("death")
 func animation_is_attacking(): return $AnimationTree.get("parameters/playback").get_current_node() == "attack"
