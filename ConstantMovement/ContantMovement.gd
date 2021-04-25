@@ -2,10 +2,10 @@ extends Node2D
 
 const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 const rounds = [
-#	preload("res://Rounds/Round0.tscn"),
-#	preload("res://Rounds/Round1.tscn"),
-#	preload("res://Rounds/Round2.tscn"),
-#	preload("res://Rounds/Round3.tscn"),
+	preload("res://Rounds/Round0.tscn"),
+	preload("res://Rounds/Round1.tscn"),
+	preload("res://Rounds/Round2.tscn"),
+	preload("res://Rounds/Round3.tscn"),
 	preload("res://Rounds/Round4.tscn"),
 ]
 const mainInterface = preload("res://Interfaces/Main.tscn")

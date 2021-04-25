@@ -3,9 +3,10 @@ extends Node2D
 export var lifes = 5
 const heart = preload("res://Lifes/Heart.tscn")
 
+var x = 50
 
 func _process(delta):
-	var x = 50
+	
 	var y = 20
 	var nChildsToCreate = lifes - get_child_count() ;
 	if nChildsToCreate > 0:

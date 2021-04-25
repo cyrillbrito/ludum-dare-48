@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	spawning -= delta
 	if get_parent().get_child_count() == 1 && spawning < 0:
-		if life < 0:
+		if life <= 0:
 			get_parent().get_parent().loadNextRoundScene()
 		else:
 			spawnRound()
@@ -35,11 +35,12 @@ func spawnRound():
 	$Timer1.start()
 	$Timer2.start()
 	$Timer3.start()
+	$TiredTimer.start()
+	$IdleTimer.start()
 	spawning = $Timer3.wait_time
 
 
 func _on_timer_spawn():
-#	print(a)
 	animation_spawn()
 	if rng.randf() < 0.3:
 		spawnWhite()
@@ -49,15 +50,18 @@ func _on_timer_spawn():
 
 func spawnRed():
 	var instance = MobRedCell.instance()
-	instance.position = Vector2(position.x - 50, position.y) 
 	instance.killScore = 250
-	get_parent().add_child(instance)
-
+	placeMob(instance)
 
 func spawnWhite():
 	var instance = MobWhiteCell.instance()
-	instance.position = Vector2(position.x - 50, position.y)
 	instance.killScore = 350
+	placeMob(instance)
+
+func placeMob(instance):
+	var x = rng.randf_range(position.x - 120, position.x - 70)
+	var y = rng.randf_range(position.y - 100, position.y - 40)
+	instance.position = Vector2(x, y)
 	get_parent().add_child(instance)
 
 
@@ -67,14 +71,15 @@ func _on_timer_tired():
 
 
 func _on_timer_idle():
-	animation_idle()
-	tired = false
+	if !death:
+		animation_idle()
+		tired = false
 	
 
 
 func _damage():
 	if tired :
-		$AnimationPlayer.play("damange")
+		$AnimationPlayer.play("damage")
 		$ProgressBar.value = life
 	else:
 		life += 1
