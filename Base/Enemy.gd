@@ -26,7 +26,7 @@ func _physics_process(delta):
 	
 	if death:
 		return
-		
+
 	if position.x < - 100:
 		queue_free()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Boss/rt.jpg" type="Texture" id=1]
 [ext_resource path="res://Boss/Boss.gd" type="Script" id=2]
@@ -24,6 +24,23 @@ animations = [ {
 "name": "spawn",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=15]
+resource_name = "damage"
+length = 0.266667
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.509804 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
@@ -69,13 +86,18 @@ auto_advance = true
 states/idle/node = SubResource( 6 )
 states/idle/position = Vector2( 251, 62 )
 states/spawn/node = SubResource( 7 )
-states/spawn/position = Vector2( 446, 62 )
+states/spawn/position = Vector2( 476, 67 )
 states/tired/node = SubResource( 8 )
-states/tired/position = Vector2( 352, 159 )
+states/tired/position = Vector2( 372, 182 )
 transitions = [ "idle", "spawn", SubResource( 9 ), "spawn", "idle", SubResource( 10 ), "idle", "tired", SubResource( 11 ), "tired", "idle", SubResource( 12 ) ]
 start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[sub_resource type="StyleBoxFlat" id=16]
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.909804, 0.811765, 0.152941, 1 )
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
@@ -84,11 +106,12 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 15 )
 anims/idle = SubResource( 3 )
 anims/spawn = SubResource( 4 )
 anims/tired = SubResource( 5 )
@@ -105,9 +128,27 @@ one_shot = true
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="Timer3" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
+
+[node name="TiredTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -100.0
+margin_top = -219.995
+margin_right = 104.297
+margin_bottom = -212.995
+custom_styles/fg = SubResource( 16 )
+custom_styles/bg = SubResource( 17 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
