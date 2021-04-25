@@ -68,7 +68,6 @@ func damage():
 	life -= 1
 	_damage()
 	if life <= 0:
-		print("died")
 		death = true
 		get_parent().get_parent().get_node("Score").updateScore(killScore)
 		_die()

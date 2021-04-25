@@ -71,7 +71,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 10 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 resource_name = "damange"
 length = 0.266667
 step = 0.0666667
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.509804 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 length = 0.611111
 loop = true
 step = 0.0555556
@@ -117,23 +117,23 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=10]
-states/attack/node = SubResource( 6 )
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/attack/node = SubResource( 14 )
 states/attack/position = Vector2( 441, 115 )
-states/idle/node = SubResource( 7 )
+states/idle/node = SubResource( 15 )
 states/idle/position = Vector2( 237, 115 )
-transitions = [ "idle", "attack", SubResource( 8 ), "attack", "idle", SubResource( 9 ) ]
+transitions = [ "idle", "attack", SubResource( 16 ), "attack", "idle", SubResource( 17 ) ]
 start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=11]
@@ -158,11 +158,11 @@ flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
-anims/damange = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/damange = SubResource( 12 )
+anims/idle = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 10 )
+tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 11 )

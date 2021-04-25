@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Boss/rt.jpg" type="Texture" id=1]
+[ext_resource path="res://Boss/Boss.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 44.2906
+height = 118.297
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "tired",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "spawn",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "spawn"
+
+[sub_resource type="Animation" id=5]
+resource_name = "tired"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "spawn"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "tired"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachine" id=13]
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 251, 62 )
+states/spawn/node = SubResource( 7 )
+states/spawn/position = Vector2( 446, 62 )
+states/tired/node = SubResource( 8 )
+states/tired/position = Vector2( 352, 159 )
+transitions = [ "idle", "spawn", SubResource( 9 ), "spawn", "idle", SubResource( 10 ), "idle", "tired", SubResource( 11 ), "tired", "idle", SubResource( 12 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
+anims/spawn = SubResource( 4 )
+anims/tired = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 13 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 14 )
+
+[node name="Timer1" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
