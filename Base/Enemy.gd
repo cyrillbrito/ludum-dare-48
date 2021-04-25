@@ -51,6 +51,7 @@ func _physics_process(delta):
 
 func damage():
 	life -= 1
+	_damage()
 	if life <= 0:
 		death = true
 		_die()
@@ -60,4 +61,7 @@ func _tick():
 	pass
 
 func _die():
+	pass
+
+func _damage():
 	pass

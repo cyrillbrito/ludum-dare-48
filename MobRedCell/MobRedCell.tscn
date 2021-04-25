@@ -148,7 +148,7 @@ position = Vector2( -3, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 7
+frame = 5
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -6,11 +6,12 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var maxFireDelay = 0.4
 var fireDelay = maxFireDelay
 var speed = 300
+var maxLife = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	type = EntityTypes.PLAYER
-	life = 7
+	life = maxLife
 
 
 func _physics_process(delta):
@@ -50,6 +51,7 @@ func _physics_process(delta):
 func takeDamage(damage):
 	life -= damage
 	$DamageSound.play()
+	
 
 func _process(delta):
 	

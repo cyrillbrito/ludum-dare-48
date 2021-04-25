@@ -14,6 +14,10 @@ func _ready():
 
 
 func _process(delta):
+	
+	if death:
+		return
+
 	if fireDelay < 0:
 			var bulletinstance = bullet.instance()
 			bulletinstance.position = Vector2(position.x - 50 , position.y)

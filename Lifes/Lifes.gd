@@ -7,7 +7,6 @@ const heart = preload("res://Lifes/Heart.tscn")
 func _process(delta):
 	var x = 50
 	var y = 20
-	print(get_child_count())
 	var nChildsToCreate = lifes - get_child_count() ;
 	if nChildsToCreate > 0:
 		for i in range(nChildsToCreate):

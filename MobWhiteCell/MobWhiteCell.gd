@@ -21,7 +21,6 @@ func _process(delta):
 		return
 	
 	if bulletCurrent != null:
-		print(bulletTimeout)
 		bulletTimeout -= delta
 		bulletLogic()
 
@@ -41,11 +40,15 @@ func _die():
 	animation_death()
 
 
+func _damage():
+	$AnimationPlayer.play("damage")
+
+
 func bulletLogic():
 	if 0 < bulletTimeout:
 		return
 	
-	init_bullet(PI/4 * (bulletCurrent + 0.5) - PI/2)
+	init_bullet(PI/4 * bulletCurrent - PI/2)
 	if(bulletCurrent == 0):
 		bulletCurrent = null
 	else:
