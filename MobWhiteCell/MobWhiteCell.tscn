@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://MobWhiteCell/idle/whitecell_00001.png" type="Texture" id=1]
 [ext_resource path="res://MobWhiteCell/MobWhiteCell.gd" type="Script" id=2]
@@ -30,6 +30,18 @@
 [ext_resource path="res://MobWhiteCell/attack/whitecell_00024.png" type="Texture" id=28]
 [ext_resource path="res://MobWhiteCell/attack/whitecell_00025.png" type="Texture" id=29]
 [ext_resource path="res://MobWhiteCell/idle/whitecell_00008.png" type="Texture" id=30]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00011.png" type="Texture" id=31]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00010.png" type="Texture" id=32]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00009.png" type="Texture" id=33]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00007.png" type="Texture" id=34]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00005.png" type="Texture" id=35]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00006.png" type="Texture" id=36]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00002.png" type="Texture" id=37]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00012.png" type="Texture" id=38]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00004.png" type="Texture" id=39]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00001.png" type="Texture" id=40]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00008.png" type="Texture" id=41]
+[ext_resource path="res://MobWhiteCell/death/whitecell-death_00003.png" type="Texture" id=42]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -44,6 +56,11 @@ animations = [ {
 "loop": true,
 "name": "attack",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 37 ), ExtResource( 42 ), ExtResource( 39 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 34 ), ExtResource( 41 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "death",
+"speed": 24.0
 } ]
 
 [sub_resource type="Animation" id=3]
@@ -66,12 +83,41 @@ tracks/1/path = NodePath("AnimatedSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "death"
+length = 0.5
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "death" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -106,6 +152,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "attack"
 
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "death"
+
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "idle"
 
@@ -115,12 +164,18 @@ animation = "idle"
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
 [sub_resource type="AnimationNodeStateMachine" id=9]
 states/attack/node = SubResource( 5 )
 states/attack/position = Vector2( 488, 144 )
+states/death/node = SubResource( 12 )
+states/death/position = Vector2( 365.471, 226 )
 states/idle/node = SubResource( 6 )
 states/idle/position = Vector2( 281, 144 )
-transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ) ]
+transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ), "idle", "death", SubResource( 13 ), "attack", "death", SubResource( 14 ) ]
 start_node = "idle"
 graph_offset = Vector2( -106.529, 0 )
 
@@ -138,11 +193,12 @@ shape = SubResource( 1 )
 position = Vector2( -1, -1 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 2 )
-animation = "idle"
-frame = 8
+animation = "death"
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
+anims/death = SubResource( 11 )
 anims/idle = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://MobRedCell/idle/bloodcell-idle_00001.png" type="Texture" id=1]
 [ext_resource path="res://MobRedCell/MobRedCell.gd" type="Script" id=2]
@@ -12,6 +12,18 @@
 [ext_resource path="res://MobRedCell/idle/bloodcell-idle_00010.png" type="Texture" id=10]
 [ext_resource path="res://MobRedCell/idle/bloodcell-idle_00006.png" type="Texture" id=11]
 [ext_resource path="res://MobRedCell/idle/bloodcell-idle_00004.png" type="Texture" id=12]
+[ext_resource path="res://MobRedCell/death/redcell-death_00002.png" type="Texture" id=13]
+[ext_resource path="res://MobRedCell/death/redcell-death_00001.png" type="Texture" id=14]
+[ext_resource path="res://MobRedCell/death/redcell-death_00011.png" type="Texture" id=15]
+[ext_resource path="res://MobRedCell/death/redcell-death_00006.png" type="Texture" id=16]
+[ext_resource path="res://MobRedCell/death/redcell-death_00004.png" type="Texture" id=17]
+[ext_resource path="res://MobRedCell/death/redcell-death_00008.png" type="Texture" id=18]
+[ext_resource path="res://MobRedCell/death/redcell-death_00007.png" type="Texture" id=19]
+[ext_resource path="res://MobRedCell/death/redcell-death_00009.png" type="Texture" id=20]
+[ext_resource path="res://MobRedCell/death/redcell-death_00005.png" type="Texture" id=21]
+[ext_resource path="res://MobRedCell/death/redcell-death_00003.png" type="Texture" id=22]
+[ext_resource path="res://MobRedCell/death/redcell-death_00012.png" type="Texture" id=23]
+[ext_resource path="res://MobRedCell/death/redcell-death_00010.png" type="Texture" id=24]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 25.165
@@ -22,8 +34,91 @@ animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "idle",
-"speed": 20.0
+"speed": 28.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 15 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "death",
+"speed": 24.0
 } ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "death"
+length = 0.5
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "death" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375, 0.416667, 0.458333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.392857
+loop = true
+step = 0.0357143
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.2, 0 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "idle", "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0357143, 0.0714286, 0.107143, 0.142857, 0.178571, 0.214286, 0.25, 0.285714, 0.321429, 0.357143 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/death/node = SubResource( 5 )
+states/death/position = Vector2( 501, 112 )
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 271, 112 )
+transitions = [ "idle", "death", SubResource( 7 ) ]
+start_node = "idle"
+graph_offset = Vector2( -141.979, 0 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [node name="MobRedCell" type="Area2D"]
 script = ExtResource( 2 )
@@ -38,7 +133,16 @@ shape = SubResource( 1 )
 position = Vector2( -3, 1 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 2 )
-animation = "idle"
-frame = 9
-playing = true
+animation = "death"
+frame = 11
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 8 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 9 )
