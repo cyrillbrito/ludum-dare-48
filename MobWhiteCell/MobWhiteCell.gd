@@ -1,23 +1,13 @@
-extends KinematicBody2D
+extends "res://Base/Enemy.gd"
 
 var bullet = preload("res://Bullet/Bullet.tscn")
 var maxFireDelay = 1
 var fireDelay = maxFireDelay
-var life = 10
-
-var rng = RandomNumberGenerator.new()
-
-var goingUp
-export var leftSpeed = 40
-export var topDownSpeed = 20
-
-var deltaSinzeLastRand = 0;
 
 var hasLife = true
 
 func _ready():
-	rng.randomize()
-	goingUp = rng.randf() < 0.5
+	life = 10
 	fireDelay = rng.randi_range(0, maxFireDelay)
 	animation_start()
 
@@ -33,24 +23,12 @@ func _process(delta):
 		fireDelay -= delta
 
 func _physics_process(delta):
-	
-#	print(.)
-#	playback.travel("attack")
-	deltaSinzeLastRand += delta
-	while(deltaSinzeLastRand > 1):
-		deltaSinzeLastRand -= 1
-		if rng.randf() < 0.1:
-			goingUp = !goingUp
-		if rng.randf() < 0.3:
-			animation_attack()
-	
-	var y
-	if goingUp:
-		y = position.y - topDownSpeed * delta
-	else:
-		y = position.y + topDownSpeed * delta
-		
-	position = Vector2(position.x + -leftSpeed * delta, y)
+	pass
+
+
+func _tick():
+	if rng.randf() < 0.3:
+		animation_attack()
 
 
 # =========== ANIMATION FUNCTIONS ===========
