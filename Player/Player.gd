@@ -12,7 +12,6 @@ export var maxLife = 10
 func _ready():
 	set_physics_process(true)
 	set_process(true)
-	animation_start()
 
 
 func _physics_process(delta):
@@ -51,6 +50,5 @@ func _process(delta):
 
 
 # =========== ANIMATION FUNCTIONS ===========
-func animation_start():  $AnimationTree.get("parameters/playback").start("idle")
 func animation_idel():   $AnimationTree.get("parameters/playback").travel("idle")
 func animation_attack(): $AnimationTree.get("parameters/playback").travel("attack")
