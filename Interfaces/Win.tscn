@@ -67,7 +67,7 @@ margin_right = 825.0
 margin_bottom = 385.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.470588, 0.588235, 0.647059, 1 )
-text = "- Press space to start the game -"
+text = "- Press space to go back -"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
