@@ -61,7 +61,7 @@ func loadNextRoundScene():
 		nextRound += 1
 		for n in get_children():
 			if "type" in n && n.type == EntityTypes.PLAYER_BULLET:
-				player.remove_child(n)
+				remove_child(n)
 				n.queue_free()
 		if nextRound > 1:
 			get_node("Score").updateScore(1000)
