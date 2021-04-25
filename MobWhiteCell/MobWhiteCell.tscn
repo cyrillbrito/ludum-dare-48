@@ -206,8 +206,8 @@ shape = SubResource( 1 )
 position = Vector2( -1, -1 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 2 )
-animation = "death"
-frame = 11
+animation = "idle"
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )

@@ -67,6 +67,7 @@ func _process(delta):
 			bulletIntance.type = EntityTypes.PLAYER_BULLET
 			bulletIntance.degrees = 0
 			bulletIntance.position = Vector2(position.x + 50 , position.y - 30)
+			bulletIntance.get_node("SpriteEnemy").queue_free()
 			get_parent().add_child(bulletIntance)
 			$ShootSound.play()
 			fireDelay = maxFireDelay

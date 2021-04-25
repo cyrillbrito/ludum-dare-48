@@ -18,6 +18,7 @@ func _process(delta):
 			var bulletIntance = bullet.instance()
 			bulletIntance.position = Vector2(position.x - 50 , position.y)
 			bulletIntance.type = EntityTypes.MOB_BULLET
+			bulletIntance.get_node("SpritePlayer").queue_free()
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay
 	else:
