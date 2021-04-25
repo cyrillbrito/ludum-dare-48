@@ -52,6 +52,7 @@ func takeDamage(damage):
 	life -= damage
 	get_parent().get_node("Score").updateScore(-400)
 	$DamageSound.play()
+	$AnimationPlayer.play("damange")
 	
 
 func _process(delta):

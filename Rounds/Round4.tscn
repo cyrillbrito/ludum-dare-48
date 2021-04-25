@@ -5,23 +5,20 @@
 
 [node name="Round0" type="Node2D"]
 
-[node name="MobRedCell" parent="." instance=ExtResource( 2 )]
-position = Vector2( 761.055, 205.306 )
-
 [node name="MobRedCell2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 765.298, 333.999 )
-
-[node name="MobRedCell3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 770.954, 503.705 )
+position = Vector2( 821.866, 495.219 )
 
 [node name="MobRedCell4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 772.369, 93.5831 )
+position = Vector2( 786.511, 104.897 )
 
 [node name="MobWhiteCell" parent="." instance=ExtResource( 1 )]
-position = Vector2( 884.092, 291.573 )
+position = Vector2( 844.494, 235.004 )
+
+[node name="MobWhiteCell4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 852.98, 384.911 )
 
 [node name="MobWhiteCell2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 923.69, 483.906 )
+position = Vector2( 961.874, 488.149 )
 
 [node name="MobWhiteCell3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 933.589, 109.14 )
+position = Vector2( 964.702, 121.868 )
