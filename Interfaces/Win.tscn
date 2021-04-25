@@ -1,0 +1,32 @@
+[gd_scene format=2]
+
+[node name="WinInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.41425
+margin_top = 1.41425
+margin_right = -1.41425
+margin_bottom = 1.41425
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 824.0
+margin_bottom = 400.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 304.056
+margin_top = 258.801
+margin_right = 378.056
+margin_bottom = 272.801
+text = "YOU WON !"
+__meta__ = {
+"_edit_use_anchors_": false
+}
