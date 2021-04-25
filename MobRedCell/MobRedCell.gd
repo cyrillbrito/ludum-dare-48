@@ -23,6 +23,9 @@ func _process(delta):
 			fireDelay = maxFireDelay
 	else:
 		fireDelay -= delta
+		
+	if position.x < - 100:
+		queue_free()
 
 func _physics_process(delta):
 	pass
