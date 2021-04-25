@@ -6,14 +6,11 @@ var bullet = preload("res://Bullet/Bullet.tscn")
 var maxFireDelay = 0.4
 var fireDelay = maxFireDelay
 var speed = 300
-export var hasLife = true
-export var maxLife = 10
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	type = EntityTypes.PLAYER
-	life = 10
+	life = 7
 
 
 func _physics_process(delta):
