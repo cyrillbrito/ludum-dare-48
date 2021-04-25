@@ -38,6 +38,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	$Lifes.lifes = player.life
+	$Stage.text = str(nextRound) + "/ 5"
 	if state == State.STARTING :
 		timeout -= delta
 		if Input.is_action_pressed("fire") && timeout < 0:

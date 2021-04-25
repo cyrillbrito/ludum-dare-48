@@ -229,7 +229,7 @@ current = true
 script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/AreaBlocking/TopArea2D"]
-position = Vector2( 527.007, -48.3409 )
+position = Vector2( 528.129, -48.3409 )
 scale = Vector2( 70, 10 )
 shape = SubResource( 1 )
 
@@ -258,15 +258,23 @@ shape = SubResource( 3 )
 [node name="Lifes" parent="ConstantMovement" instance=ExtResource( 3 )]
 
 [node name="Score" type="Node2D" parent="ConstantMovement"]
-position = Vector2( 494.655, 428.728 )
+position = Vector2( 850, 15 )
 script = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="ConstantMovement/Score"]
-margin_left = -438.0
-margin_top = 138.0
-margin_right = -369.0
-margin_bottom = 152.0
+margin_right = 69.0
+margin_bottom = 14.0
 text = "SCORE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stage" type="Label" parent="ConstantMovement"]
+margin_left = 450.0
+margin_top = 15.0
+margin_right = 490.0
+margin_bottom = 29.0
+text = "0 / 5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
