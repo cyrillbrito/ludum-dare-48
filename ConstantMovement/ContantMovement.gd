@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	$Life.text = str(get_node("Player").life) + "/" + str(get_node("Player").maxLife)
+	$Lifes.lifes = player.life
 	
 	if state == State.STARTING :
 		timeout -= delta
