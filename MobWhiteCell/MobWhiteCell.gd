@@ -1,6 +1,5 @@
 extends "res://Base/Enemy.gd"
 
-const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 const bullet = preload("res://Bullet/Bullet.tscn")
 
 var hasLife = true

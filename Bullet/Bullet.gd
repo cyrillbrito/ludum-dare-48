@@ -1,7 +1,7 @@
 extends Area2D
 const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 
-var speed = 300
+var speed = 400
 export var hasLife = false
 export var degrees = PI
 
