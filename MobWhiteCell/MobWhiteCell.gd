@@ -11,7 +11,9 @@ func _ready():
 
 
 func _process(delta):
-	
+	if position.x < -100:
+		queue_free()
+		
 	if death:
 		return
 	
