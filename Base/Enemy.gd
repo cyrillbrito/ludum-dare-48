@@ -5,6 +5,7 @@ const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 export var leftSpeed = 40
 export var topDownSpeed = 20
 export var changeSwitchDir = 0.3
+export var killScore = 500
 
 var dir
 var deltaSinceTick = 0
@@ -53,7 +54,9 @@ func damage():
 	life -= 1
 	_damage()
 	if life <= 0:
+		print("died")
 		death = true
+		get_parent().get_parent().get_node("Score").updateScore(killScore)
 		_die()
 
 

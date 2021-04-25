@@ -38,7 +38,6 @@ func _physics_process(delta):
 
 func _process(delta):
 	$Lifes.lifes = player.life
-	
 	if state == State.STARTING :
 		timeout -= delta
 		if Input.is_action_pressed("fire") && timeout < 0:
@@ -60,6 +59,8 @@ func loadNextRoundScene():
 	if nextRound < rounds.size():
 		scene = rounds[nextRound].instance()
 		nextRound += 1
+		if nextRound > 1:
+			get_node("Score").updateScore(1000)
 	else: 
 		scene = winInterface.instance()
 		state = State.END

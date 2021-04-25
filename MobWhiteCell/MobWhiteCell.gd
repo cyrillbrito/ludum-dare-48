@@ -11,7 +11,7 @@ var bulletCurrent
 
 func _ready():
 	life = 4
-
+	killScore = 700
 
 func _process(delta):
 	if position.x < -100:

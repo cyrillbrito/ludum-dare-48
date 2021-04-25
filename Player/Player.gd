@@ -50,6 +50,7 @@ func _physics_process(delta):
 
 func takeDamage(damage):
 	life -= damage
+	get_parent().get_node("Score").updateScore(-400)
 	$DamageSound.play()
 	
 

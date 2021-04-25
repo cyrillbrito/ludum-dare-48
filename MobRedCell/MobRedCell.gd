@@ -35,7 +35,7 @@ func _physics_process(delta):
 	pass
 
 
-func _die():
+func _die(): 
 	animation_death()
 
 
