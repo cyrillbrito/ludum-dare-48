@@ -6,16 +6,16 @@
 [node name="Round0" type="Node2D"]
 
 [node name="MobRedCell" parent="." instance=ExtResource( 2 )]
-position = Vector2( 765.298, 152.98 )
+position = Vector2( 831.766, 148.737 )
 
 [node name="MobRedCell2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 775.197, 465.521 )
+position = Vector2( 843.079, 489.563 )
 
 [node name="MobRedCell3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 922.275, 315.615 )
+position = Vector2( 943.488, 309.958 )
 
 [node name="MobWhiteCell" parent="." instance=ExtResource( 1 )]
-position = Vector2( 927.933, 145.909 )
+position = Vector2( 960.46, 147.323 )
 
 [node name="MobWhiteCell2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 940.661, 472.592 )
+position = Vector2( 961.874, 490.977 )

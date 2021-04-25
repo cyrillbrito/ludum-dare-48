@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Player/attack/attack_07.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -72,6 +72,23 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "damange"
+length = 0.266667
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 0.509804 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.611111
 loop = true
 step = 0.0555556
@@ -100,26 +117,26 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/attack/node = SubResource( 5 )
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/attack/node = SubResource( 6 )
 states/attack/position = Vector2( 441, 115 )
-states/idle/node = SubResource( 6 )
+states/idle/node = SubResource( 7 )
 states/idle/position = Vector2( 237, 115 )
-transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ) ]
+transitions = [ "idle", "attack", SubResource( 8 ), "attack", "idle", SubResource( 9 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 
 [node name="Player" type="Area2D"]
 position = Vector2( 88.9493, 319.907 )
@@ -136,19 +153,19 @@ position = Vector2( -5.76437, 7.24463 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 9
 flip_h = true
 flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/damange = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 10 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 10 )
+parameters/playback = SubResource( 11 )
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )

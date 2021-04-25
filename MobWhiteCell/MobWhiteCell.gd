@@ -2,21 +2,19 @@ extends "res://Base/Enemy.gd"
 
 const bullet = preload("res://Bullet/Bullet.tscn")
 
-var hasLife = true
-
 # used in the attack logic
 var bulletTimeout
 var bulletCurrent
 
 
 func _ready():
-	life = 4
+	life = 5
 	killScore = 700
+	attackInterval = 0.9
+
 
 func _process(delta):
-	if position.x < -100:
-		queue_free()
-		
+
 	if death:
 		return
 	
@@ -29,19 +27,22 @@ func _physics_process(delta):
 	pass
 
 
-func _tick():
-	if !animation_is_attacking() && rng.randf() < 0.4:
-		animation_attack()
-		bulletCurrent = 7
-		bulletTimeout = 0.5
-
-
 func _die():
 	animation_death()
 
 
 func _damage():
 	$AnimationPlayer.play("damage")
+	
+
+func _attack():
+	if(rng.randf() < .3):
+		init_bullet(PI)
+	else:
+		animation_attack()
+		bulletCurrent = 7
+		bulletTimeout = 0.5
+		attackTimeout += 1.2
 
 
 func bulletLogic():
