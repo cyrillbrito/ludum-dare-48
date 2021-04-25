@@ -8,4 +8,5 @@ enum EntityTypes {
 	TOP_LIMIT,
 	BOTTOM_LIMIT,
 	RIGHT_LIMIT,
+	LEFT_LIMIT,
 }

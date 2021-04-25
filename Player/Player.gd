@@ -40,6 +40,9 @@ func _physics_process(delta):
 		elif overlap.type == EntityTypes.RIGHT_LIMIT:
 			if  velocity.x > 0:
 				 velocity.x = 0
+		elif overlap.type == EntityTypes.LEFT_LIMIT:
+			if  0 > velocity.x:
+				 velocity.x = 0
 		elif overlap.type != EntityTypes.PLAYER_BULLET:
 			life -= 1
 			overlap.queue_free()
