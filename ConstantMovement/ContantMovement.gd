@@ -1,6 +1,6 @@
 extends Node2D
 
-
+const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 const rounds = [
 	preload("res://Rounds/Round0.tscn"),
 	preload("res://Rounds/Round1.tscn"),
@@ -8,7 +8,6 @@ const rounds = [
 	preload("res://Rounds/Round3.tscn"),
 	preload("res://Rounds/Round4.tscn"),
 ]
-
 const mainInterface = preload("res://Interfaces/Main.tscn")
 const winInterface = preload("res://Interfaces/Win.tscn")
 const lostInterface = preload("res://Interfaces/Lost.tscn")
@@ -60,9 +59,13 @@ func loadNextRoundScene():
 	if nextRound < rounds.size():
 		scene = rounds[nextRound].instance()
 		nextRound += 1
+		for n in get_children():
+			if "type" in n && n.type == EntityTypes.PLAYER_BULLET:
+				player.remove_child(n)
+				n.queue_free()
 		if nextRound > 1:
 			get_node("Score").updateScore(1000)
-	else: 
+	else:
 		scene = winInterface.instance()
 		scene.finalScore =  get_node("Score").score
 		state = State.END

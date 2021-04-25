@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Parallax/midground_bottom_small.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Base/BottomArea2D.gd" type="Script" id=13]
 [ext_resource path="res://RightArea2D.gd" type="Script" id=14]
 [ext_resource path="res://LeftArea2D.gd" type="Script" id=15]
+[ext_resource path="res://Interfaces/default_front.tres" type="DynamicFont" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -229,7 +230,7 @@ current = true
 script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/AreaBlocking/TopArea2D"]
-position = Vector2( 528.129, -48.3409 )
+position = Vector2( 528.129, -38.341 )
 scale = Vector2( 70, 10 )
 shape = SubResource( 1 )
 
@@ -245,7 +246,7 @@ shape = SubResource( 1 )
 script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/AreaBlocking/RightArea2D"]
-position = Vector2( 1053.76, 301.782 )
+position = Vector2( 1001.62, 300.1 )
 shape = SubResource( 2 )
 
 [node name="LeftArea2D" type="Area2D" parent="ConstantMovement/AreaBlocking"]
@@ -258,12 +259,11 @@ shape = SubResource( 3 )
 [node name="Lifes" parent="ConstantMovement" instance=ExtResource( 3 )]
 
 [node name="Score" type="Node2D" parent="ConstantMovement"]
-position = Vector2( 850, 15 )
+position = Vector2( 850, 10 )
 script = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="ConstantMovement/Score"]
-margin_right = 69.0
-margin_bottom = 14.0
+custom_fonts/font = ExtResource( 16 )
 text = "SCORE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,9 +271,10 @@ __meta__ = {
 
 [node name="Stage" type="Label" parent="ConstantMovement"]
 margin_left = 450.0
-margin_top = 15.0
+margin_top = 10.0
 margin_right = 490.0
 margin_bottom = 29.0
+custom_fonts/font = ExtResource( 16 )
 text = "0 / 5"
 __meta__ = {
 "_edit_use_anchors_": false
