@@ -17,6 +17,7 @@ func _ready():
 	$Timer1.connect("timeout", self, "_on_timer_spawn") 
 	$Timer2.connect("timeout", self, "_on_timer_spawn") 
 	$Timer3.connect("timeout", self, "_on_timer_spawn")
+	$TimerN.connect("timeout", self, "_on_timer_spawn2")
 	$TiredTimer.connect("timeout",self,"_on_timer_tired")
 	$IdleTimer.connect("timeout",self,"_on_timer_idle")
 	spawnRound()
@@ -37,16 +38,18 @@ func spawnRound():
 	$Timer3.start()
 	$TiredTimer.start()
 	$IdleTimer.start()
-	spawning = $Timer3.wait_time
+	spawning = 2
 
 
 func _on_timer_spawn():
 	animation_spawn()
+	$TimerN.start()
+
+func _on_timer_spawn2():
 	if rng.randf() < 0.3:
 		spawnWhite()
 	else:
 		spawnRed()
-
 
 func spawnRed():
 	var instance = MobRedCell.instance()

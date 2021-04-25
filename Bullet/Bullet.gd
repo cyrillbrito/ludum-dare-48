@@ -19,7 +19,7 @@ func _physics_process(delta):
 
 	var x = cos(degrees) * speed * delta
 	var y = sin(degrees) * speed * delta
-	var collidedObjext =  move(Vector2(x, y))
+	move(Vector2(x, y))
 
 	if type != EntityTypes.PLAYER_BULLET:
 		return

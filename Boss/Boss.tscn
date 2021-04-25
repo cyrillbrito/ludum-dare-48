@@ -210,7 +210,7 @@ shape = SubResource( 1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "tired"
-frame = 4
+frame = 7
 speed_scale = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -234,6 +234,10 @@ one_shot = true
 
 [node name="Timer3" type="Timer" parent="."]
 wait_time = 1.75
+one_shot = true
+
+[node name="TimerN" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="TiredTimer" type="Timer" parent="."]
