@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MobWhiteCell/MobWhiteCell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MobRedCell/MobRedCell.tscn" type="PackedScene" id=2]
+
+[node name="Round0" type="Node2D"]
+
+[node name="MobRedCell" parent="." instance=ExtResource( 2 )]
+position = Vector2( 761.055, 205.306 )
+
+[node name="MobRedCell2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 765.298, 333.999 )
+
+[node name="MobRedCell3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 770.954, 503.705 )
+
+[node name="MobRedCell4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 772.369, 93.5831 )
+
+[node name="MobWhiteCell" parent="." instance=ExtResource( 1 )]
+position = Vector2( 884.092, 291.573 )
+
+[node name="MobWhiteCell2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 923.69, 483.906 )
+
+[node name="MobWhiteCell3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 933.589, 109.14 )

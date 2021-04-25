@@ -207,7 +207,7 @@ position = Vector2( -1, -1 )
 scale = Vector2( 0.45, 0.45 )
 frames = SubResource( 2 )
 animation = "idle"
-frame = 7
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )

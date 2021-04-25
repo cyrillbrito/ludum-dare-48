@@ -14,13 +14,16 @@ func _ready():
 
 func _physics_process(delta):
 
+	if position.x < -10 || position.y < -10  || 1034 < position.x || 610 < position.y:
+		queue_free()
+
 	var x = cos(degrees) * speed * delta
 	var y = sin(degrees) * speed * delta
 	var collidedObjext =  move(Vector2(x, y))
 
 	if type != EntityTypes.PLAYER_BULLET:
 		return
-	
+
 	var overlaps = get_overlapping_areas()
 	for overlap in overlaps:
 		if overlap.type == EntityTypes.MOB_BULLET:

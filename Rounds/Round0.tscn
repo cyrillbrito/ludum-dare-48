@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MobRedCell/MobRedCell.tscn" type="PackedScene" id=2]
+
+[node name="Round0" type="Node2D"]
+
+[node name="MobRedCell" parent="." instance=ExtResource( 2 )]
+position = Vector2( 944.903, 110.553 )
+
+[node name="MobRedCell2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 953.388, 505.119 )
+
+[node name="MobRedCell3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 950.56, 284.502 )

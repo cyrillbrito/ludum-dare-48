@@ -1,0 +1,74 @@
+[gd_scene format=2]
+
+[node name="MainInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 824.0
+margin_bottom = 500.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 405.879
+margin_top = 127.279
+margin_right = 445.879
+margin_bottom = 141.279
+text = "GAME TITLE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lore" type="Label" parent="."]
+margin_left = 225.841
+margin_top = 185.128
+margin_right = 708.841
+margin_bottom = 199.128
+text = "You are something going in the organism of a living thing, kill them all"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsBold2" type="Label" parent="."]
+margin_left = 225.0
+margin_top = 276.0
+margin_right = 708.0
+margin_bottom = 290.0
+text = "Instructions"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="."]
+margin_left = 225.841
+margin_top = 298.704
+margin_right = 708.841
+margin_bottom = 329.704
+text = "- Use WASD or with the arrows to move
+- Use SPACE to shoot 
+- Kill all the enemies to pass to the next level
+- Don't die
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Footer" type="Label" parent="."]
+margin_left = 201.0
+margin_top = 479.0
+margin_right = 826.0
+margin_bottom = 493.0
+text = "- Press space to start the game -"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

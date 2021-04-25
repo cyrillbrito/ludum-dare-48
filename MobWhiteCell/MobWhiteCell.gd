@@ -45,14 +45,14 @@ func init_bullets():
 
 
 func init_bullet(degrees):
-	var bulletIntance = bullet.instance()
+	var bulletinstance = bullet.instance()
 	var x = position.x + cos(degrees) * 10
 	var y = position.y + sin(degrees) * 10
-	bulletIntance.position = Vector2(x, y)
-	bulletIntance.degrees = degrees
-	bulletIntance.type = EntityTypes.MOB_BULLET
-	bulletIntance.get_node("SpritePlayer").queue_free()
-	get_parent().add_child(bulletIntance)
+	bulletinstance.position = Vector2(x, y)
+	bulletinstance.degrees = degrees
+	bulletinstance.type = EntityTypes.MOB_BULLET
+	bulletinstance.get_node("SpritePlayer").queue_free()
+	get_parent().add_child(bulletinstance)
 
 
 # =========== ANIMATION FUNCTIONS ===========
