@@ -1,17 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="WinInterface" type="Control"]
+[ext_resource path="res://Interfaces/Lost.gd" type="Script" id=1]
+
+[node name="LosseInterface" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -3.17841
+margin_bottom = -3.17841
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 200.0
-margin_top = 200.0
+margin_top = 198.941
 margin_right = 824.0
-margin_bottom = 400.0
+margin_bottom = 398.941
 color = Color( 0, 0, 0, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,3 +31,17 @@ text = "YOU LOST !"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Score" type="Label" parent="."]
+margin_left = 308.304
+margin_top = 281.817
+margin_right = 351.304
+margin_bottom = 295.817
+text = "Score: "
+
+[node name="ScoreNumber" type="Label" parent="."]
+margin_left = 366.751
+margin_top = 282.119
+margin_right = 406.751
+margin_bottom = 296.119
+text = "1000"

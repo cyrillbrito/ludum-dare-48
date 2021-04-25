@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Interfaces/Win.gd" type="Script" id=1]
 
 [node name="WinInterface" type="Control"]
 anchor_right = 1.0
@@ -7,6 +9,7 @@ margin_left = -1.41425
 margin_top = 1.41425
 margin_right = -1.41425
 margin_bottom = 1.41425
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,3 +33,19 @@ text = "YOU WON !"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="finalScore" type="Label" parent="."]
+margin_left = 306.185
+margin_top = 284.996
+margin_right = 383.185
+margin_bottom = 315.996
+text = "Final Score: 
+"
+
+[node name="ScoreNumber" type="Label" parent="."]
+margin_left = 392.001
+margin_top = 286.055
+margin_right = 432.001
+margin_bottom = 317.055
+text = "1000
+"

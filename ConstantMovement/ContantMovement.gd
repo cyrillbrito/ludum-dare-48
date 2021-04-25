@@ -63,8 +63,9 @@ func loadNextRoundScene():
 			get_node("Score").updateScore(1000)
 	else: 
 		scene = winInterface.instance()
+		scene.finalScore =  get_node("Score").score
 		state = State.END
-		timeout = 2
+		timeout = 2 
 
 	add_child(scene)
 
@@ -74,6 +75,7 @@ func loadLostScene():
 	timeout = 2
 	scene.queue_free()
 	scene = lostInterface.instance()
+	scene.finalScore =  get_node("Score").score
 	add_child(scene)
 
 
