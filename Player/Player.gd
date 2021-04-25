@@ -1,22 +1,23 @@
-extends KinematicBody2D
+extends "res://Base/Entity.gd"
 
+const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 var bullet = preload("res://Bullet/Bullet.tscn")
+
 var maxFireDelay = 0.4
 var fireDelay = maxFireDelay
 var speed = 300
 export var hasLife = true
-export var life = 10
 export var maxLife = 10
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_physics_process(true)
-	set_process(true)
+	type = EntityTypes.PLAYER
+	life = 10
 
 
 func _physics_process(delta):
 	var velocity = Vector2()
-	print("life  "+ str(life))
 	if Input.is_action_pressed("ui_left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_right"):
@@ -26,7 +27,23 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += 1
 	velocity = velocity.normalized() * speed * delta
-	velocity = move_and_collide(velocity)
+
+	
+	var overlaps = get_overlapping_areas()
+	for overlap in overlaps:
+		if overlap.type == EntityTypes.TOP_LIMIT:
+			if velocity.y < 0:
+				 velocity.y = 0
+		elif overlap.type == EntityTypes.BOTTOM_LIMIT:
+			if 0 < velocity.y:
+				 velocity.y = 0
+		elif overlap.type != EntityTypes.PLAYER_BULLET:
+			life -= 1
+			overlap.queue_free()
+			
+	position.x += velocity.x
+	position.y += velocity.y
+
 
 func _process(delta):
 	
@@ -38,10 +55,8 @@ func _process(delta):
 	if fireDelay < 0:
 		if Input.is_action_pressed("fire"): #span Bullet
 			var bulletIntance = bullet.instance()
-			bulletIntance.isPlayer = true
-			bulletIntance.collision_layer = 2^2
-			
-			bulletIntance.collision_mask = 8
+			bulletIntance.type = EntityTypes.PLAYER_BULLET
+			bulletIntance.degrees = 0
 			bulletIntance.position = Vector2(position.x + 50 , position.y - 30)
 			get_parent().add_child(bulletIntance)
 			fireDelay = maxFireDelay

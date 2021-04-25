@@ -1,0 +1,10 @@
+
+enum EntityTypes {
+	PLAYER,
+	MOB_RED,
+	MOB_WHITE,
+	MOB_BULLET,
+	PLAYER_BULLET,
+	TOP_LIMIT,
+	BOTTOM_LIMIT,
+}

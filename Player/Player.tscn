@@ -24,9 +24,9 @@
 [ext_resource path="res://Player/attack/attack_01.png" type="Texture" id=22]
 [ext_resource path="res://Player/attack/attack_09.png" type="Texture" id=23]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 10 ) ],
 "loop": true,
@@ -39,7 +39,7 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 step = 0.04
@@ -68,7 +68,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=4]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -115,35 +115,33 @@ states/idle/position = Vector2( 237, 115 )
 transitions = [ "idle", "attack", SubResource( 7 ), "attack", "idle", SubResource( 8 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="Area2D"]
 position = Vector2( 88.9493, 319.907 )
 rotation = -3.14159
-collision_layer = 4
-collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
 scale = Vector2( 3.2, 5 )
-shape = SubResource( 10 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -5.76437, 7.24463 )
 scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 11 )
+frames = SubResource( 2 )
 animation = "idle"
-frame = 1
+frame = 9
 flip_h = true
 flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 12 )
-anims/idle = SubResource( 13 )
+anims/attack = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 14 )
+parameters/playback = SubResource( 10 )

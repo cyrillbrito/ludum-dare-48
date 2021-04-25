@@ -1,29 +1,34 @@
-extends KinematicBody2D
+extends Area2D
+const EntityTypes = preload("res://Base/enum.gd").EntityTypes
 
 var speed = 300
 export var hasLife = false
-export var isPlayer = false
 export var degrees = PI
 
+var type
+var damage = 1
 
 func _ready():
 	pass
 
 
 func _physics_process(delta):
-	if isPlayer :
-		var collidedObjext =  move_and_collide(Vector2(speed * delta, 0))
-		if collidedObjext:
-			collidedObjext.collider.queue_free()
+
+	var x = cos(degrees) * speed * delta
+	var y = sin(degrees) * speed * delta
+	var collidedObjext =  move(Vector2(x, y))
+
+	if type != EntityTypes.PLAYER_BULLET:
+		return
+	
+	var overlaps = get_overlapping_areas()
+	for overlap in overlaps:
+		print(overlap.type)
+		if overlap.type == EntityTypes.MOB_BULLET:
+			overlap.queue_free()
 			queue_free()
-	else:
-		var x = cos(degrees) * speed * delta
-		var y = sin(degrees) * speed * delta
-		var collidedObjext =  move_and_collide(Vector2(x, y))
-		if collidedObjext:
-			var player = collidedObjext.collider
-			queue_free()
-			if player.hasLife:
-				player.life -= 0.5
-			else:
-				player.queue_free()
+
+
+func move(vector):
+	position.x += vector.x
+	position.y += vector.y

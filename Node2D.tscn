@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Parallax/midground_bottom_small.png" type="Texture" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Parallax/foreground_big.png" type="Texture" id=9]
 [ext_resource path="res://Parallax/background_wave.png" type="Texture" id=10]
 [ext_resource path="res://MobWhiteCell/MobWhiteCell.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Base/TopArea2D.gd" type="Script" id=12]
+[ext_resource path="res://Base/BottomArea2D.gd" type="Script" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node2D" type="Node2D"]
 
@@ -61,6 +65,7 @@ texture = ExtResource( 10 )
 centered = false
 
 [node name="MidgroundBottonBig" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1600, 0 )
@@ -73,6 +78,7 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="MidgroundBottonSmall1" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1600, 0 )
@@ -85,6 +91,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="MidgroundBottonSmall2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, -40 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1600, 0 )
@@ -97,6 +104,7 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="MidgroundTopBig" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1442, 0 )
 
@@ -108,6 +116,7 @@ texture = ExtResource( 5 )
 centered = false
 
 [node name="MidgroundTopSmall1" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1442, 0 )
 
@@ -119,6 +128,7 @@ texture = ExtResource( 7 )
 centered = false
 
 [node name="MidgroundTopSmall2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.784314 )
 motion_scale = Vector2( 0.5, 1 )
 motion_mirroring = Vector2( 1442, 0 )
 
@@ -200,16 +210,6 @@ script = ExtResource( 6 )
 
 [node name="Player" parent="ConstantMovement" instance=ExtResource( 1 )]
 position = Vector2( 96.2425, 291.711 )
-collision_mask = 9
-
-[node name="MobRedCell1" parent="ConstantMovement" instance=ExtResource( 3 )]
-position = Vector2( 942.102, 195.723 )
-
-[node name="MobRedCell2" parent="ConstantMovement" instance=ExtResource( 3 )]
-position = Vector2( 841.49, 359.527 )
-
-[node name="MobRedCell3" parent="ConstantMovement" instance=ExtResource( 3 )]
-position = Vector2( 885.937, 186.501 )
 
 [node name="Camera2D" type="Camera2D" parent="ConstantMovement"]
 anchor_mode = 0
@@ -226,4 +226,26 @@ __meta__ = {
 }
 
 [node name="MobWhiteCell" parent="ConstantMovement" instance=ExtResource( 11 )]
-position = Vector2( 804.58, 286.8 )
+position = Vector2( 948.743, 289.47 )
+
+[node name="MobRedCell" parent="ConstantMovement" instance=ExtResource( 3 )]
+position = Vector2( 202.826, 162.398 )
+
+[node name="MobRedCell2" parent="ConstantMovement" instance=ExtResource( 3 )]
+position = Vector2( 149.432, 433.37 )
+
+[node name="TopArea2D" type="Area2D" parent="ConstantMovement"]
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/TopArea2D"]
+position = Vector2( 527.007, -48.3409 )
+scale = Vector2( 70, 10 )
+shape = SubResource( 1 )
+
+[node name="BottomArea2D" type="Area2D" parent="ConstantMovement"]
+script = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConstantMovement/BottomArea2D"]
+position = Vector2( 527.007, 650 )
+scale = Vector2( 70, 10 )
+shape = SubResource( 1 )
