@@ -3,7 +3,7 @@
 
 2D shooter game developed in Godot for the Ludum Dare 48 Compo Game Jam.
 
-![Preview](./preview.mp4)
+![Preview](./preview.gif)
 
 **Game Lore**
 
